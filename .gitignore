@@ -419,6 +419,19 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
+# Created by https://www.gitignore.io/api/codeblocks
+# Edit at https://www.gitignore.io/?templates=codeblocks
+
+### CodeBlocks ###
+# specific to CodeBlocks IDE
+*.layout
+*.depend
+# generated directories
+bin/
+obj/
+
+# End of https://www.gitignore.io/api/codeblocks
+
 *.sln
 *.vcxproj
 *.vcxproj.filters
