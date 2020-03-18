@@ -9,24 +9,26 @@ LinkedList::~LinkedList() {
 	clear();
 }
 
-void LinkedList::addDef(std::string str) {
+void LinkedList::addEl(std::string word, std::string definition) {
 	if (this->head == nullptr) {
-		this->head = new Node(str);
+		this->head = new Node(word, definition);
 	}
 	else {
 		Node* current = this->head;
 		while (current->pointer != nullptr) {
 			current = current->pointer;
 		}
-		current->pointer = new Node(str);
+		current->pointer = new Node(word, definition);
 	}
 	this->size++;
 }
 
-void LinkedList::printAll() {
+void LinkedList::printWord(std::string word) {
 	Node* temp = this->head;
 	while (temp != nullptr) {
-		std::cout << temp->definition << std::endl;
+		if (temp->word == word) {
+			std::cout << temp->definition << std::endl;
+		}
 		temp = temp->pointer;
 	}
 	delete temp;

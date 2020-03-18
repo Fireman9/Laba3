@@ -5,17 +5,19 @@ class LinkedList {
 public:
 	LinkedList();
 	~LinkedList();
-	void addDef(std::string str);
-	void printAll();
+	void addEl(std::string word, std::string definition);
+	void printWord(std::string word);
 	void clear();
 private:
 	class Node {
 	public:
+		std::string word;
 		std::string definition;
 		Node* pointer;
 
-		Node(std::string str, Node* pNext = nullptr) {
-			this->definition = str;
+		Node(std::string word, std::string def, Node* pNext = nullptr) {
+			this->word = word;
+			this->definition = def;
 			this->pointer = pNext;
 		}
 	};
