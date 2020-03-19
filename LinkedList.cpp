@@ -23,7 +23,7 @@ void LinkedList::addEl(std::string word, std::string definition) {
 	this->size++;
 }
 
-void LinkedList::printWord(std::string word) {
+void LinkedList::printDefinition(std::string word) {
 	Node* temp = this->head;
 	while (temp != nullptr) {
 		if (temp->word == word) {
@@ -31,7 +31,6 @@ void LinkedList::printWord(std::string word) {
 		}
 		temp = temp->pointer;
 	}
-	delete temp;
 }
 
 void LinkedList::clear() {
@@ -41,4 +40,19 @@ void LinkedList::clear() {
 		delete temp;
 	}
 	this->size = 0;
+}
+
+int LinkedList::getSize() {
+	return this->size;
+}
+
+void LinkedList::getEl(std::string& word, std::string& def, int position) {
+	Node* temp = this->head;
+	for (int i = 0; i <= position; i++) {
+		if (i == position) {
+			word = temp->word;
+			def = temp->definition;
+		}
+		temp = temp->pointer;
+	}
 }

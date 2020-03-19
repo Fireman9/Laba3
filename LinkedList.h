@@ -6,8 +6,10 @@ public:
 	LinkedList();
 	~LinkedList();
 	void addEl(std::string word, std::string definition);
-	void printWord(std::string word);
+	void printDefinition(std::string word);
 	void clear();
+	int getSize();
+	void getEl(std::string& word, std::string& def, int position);
 private:
 	class Node {
 	public:
