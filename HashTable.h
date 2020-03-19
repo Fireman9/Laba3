@@ -9,6 +9,7 @@ public:
 	int hashFun(std::string str);
 	void resize();
 	void addEl(std::string word, std::string def);
+	void findEl(std::string word);
 private:
 	int size;
 	int usedSize;
