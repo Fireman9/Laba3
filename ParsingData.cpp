@@ -5,12 +5,13 @@
 
 using namespace std;
 
-void parsing() //Ќазар не читай эту хрень пока € не допишу))
+void parsing(HashTable& hashTable) //Ќазар не читай эту хрень пока € не допишу))
 {
     string word, def;
     ifstream inn;
     inn.open("dictionary.txt");
-    while(inn.eof() != true)
+   if(inn.is_open()){
+     while(inn.eof() != true)
     {
         getline(inn, word, ';');
         getline(inn, def, '\n');
@@ -19,4 +20,7 @@ void parsing() //Ќазар не читай эту хрень пока € не допишу))
         def = "";
     }
     inn.close();
+   }else{
+   cout<< "File wasn`t open!"<<endl;
+   }
 }
