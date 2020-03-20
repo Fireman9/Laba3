@@ -2,7 +2,7 @@
 #include <cmath>
 
 HashTable::HashTable() {
-	size = 1;
+	size = 8;
 	usedSize = 0;
 	array = new LinkedList[size];
 }
@@ -13,17 +13,29 @@ HashTable::~HashTable() {
 
 int HashTable::hashFun(std::string str) {
 	int key = 0;
-	long long temp;
+	long long temp1 = 0;
+	long long temp2 = 0;
 	char cast;
 	int ascii;
 	for (int i = 0; i < str.length(); i++) {
-		temp = pow(26, (str.length() - (i + 1)));
-		cast = str[i];
-		ascii = (int)cast - 65;
+		if (str.length() - (i + 1) > 8) {
+			temp1 = pow(26, 8);
+		}
+		else {
+			temp1 = pow(26, (str.length() - (i + 1)));
+		}
+		if (str[i] != '-' && str[i] != ' ') {
+			cast = str[i];
+			ascii = (int)cast - 65;
+		}
+		else {
+			ascii = 1;
+		}
+		temp1 *= ascii;
+		temp2 += temp1;
 	}
-	temp *= ascii;
-	temp %= size;
-	key = temp;
+	temp2 %= size;
+	key = temp2;
 	return key;
 }
 
