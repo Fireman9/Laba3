@@ -10,17 +10,20 @@ void parsing(HashTable& hashTable) //Ќазар не читай эту хрень пока € не допишу))
     string word, def;
     ifstream inn;
     inn.open("dictionary.txt");
-   if(inn.is_open()){
-     while(inn.eof() != true)
+    if(inn.is_open())
     {
-        getline(inn, word, ';');
-        getline(inn, def, '\n');
-        hashTable.addEl(word, def);
-        word = "";
-        def = "";
+        while(inn.eof() != true)
+        {
+            getline(inn, word, ';');
+            getline(inn, def, '\n');
+            hashTable.addEl(word, def);
+            word = "";
+            def = "";
+        }
+        inn.close();
     }
-    inn.close();
-   }else{
-   cout<< "File wasn`t open!"<<endl;
-   }
+    else
+    {
+        cout<< "File wasn`t open!"<<endl;
+    }
 }
