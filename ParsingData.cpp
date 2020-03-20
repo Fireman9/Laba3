@@ -1,29 +1,22 @@
-#include<iostream>
-#include<string>
-#include<fstream>
-#include "HashTable.h"
+#include "ParsingData.h"
 
 using namespace std;
 
-void parsing(HashTable& hashTable) //Ќазар не читай эту хрень пока € не допишу))
-{
+void parsing(HashTable& hashTable) {
     string word, def;
-    ifstream inn;
-    inn.open("dictionary.txt");
-    if(inn.is_open())
-    {
-        while(inn.eof() != true)
-        {
-            getline(inn, word, ';');
-            getline(inn, def, '\n');
+    ifstream in;
+    in.open("dictionary.txt");
+    if(in.is_open()) {
+        while(in.eof() != true) {
+            getline(in, word, ';');
+            getline(in, def, '\n');
             hashTable.addEl(word, def);
             word = "";
             def = "";
         }
-        inn.close();
+        in.close();
     }
-    else
-    {
-        cout<< "File wasn`t open!"<<endl;
+    else {
+        cout<< "File wasn't open!"<<endl;
     }
 }

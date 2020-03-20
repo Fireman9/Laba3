@@ -1,3 +1,7 @@
 #pragma once
 
-void parsing();
+#include<string>
+#include<fstream>
+#include "HashTable.h"
+
+void parsing(HashTable& hashTable);
