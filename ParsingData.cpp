@@ -2,12 +2,15 @@
 
 using namespace std;
 
-void parsing(HashTable& hashTable) {
+void parsing(HashTable& hashTable)
+{
     string word, def;
     ifstream in;
     in.open("dictionary.txt");
-    if(in.is_open()) {
-        while(in.eof() != true) {
+    if(in.is_open())
+    {
+        while(in.eof() != true)
+        {
             getline(in, word, ';');
             getline(in, def, '\n');
             hashTable.addEl(word, def);
@@ -16,12 +19,14 @@ void parsing(HashTable& hashTable) {
         }
         in.close();
     }
-    else {
+    else
+    {
         cout<< "File wasn't open!"<<endl;
     }
 }
 
-vector<string> divideAndRule(string phrase){
+vector<string> divideAndRule(string phrase)
+{
     vector <string> word;
     string buf;
     char a;
@@ -43,27 +48,38 @@ vector<string> divideAndRule(string phrase){
     return word;
 }
 
-void upperRegistr(vector<string>& word){
+void upperRegistr(vector<string>& word)
+{
     string a;
-for(int i = 0; i < word.size(); i++){
-    for(int j = 0; j < word[i].length(); j++){
-        word[i][j] = toupper(word[i][j]);
+    for(int i = 0; i < word.size(); i++)
+    {
+        for(int j = 0; j < word[i].length(); j++)
+        {
+            word[i][j] = toupper(word[i][j]);
+        }
+    }
+    for(int i = 0; i < word.size(); i++)
+    {
+        cout<<word[i]<<endl;
     }
 }
-for(int i = 0; i < word.size(); i++){
-    cout<<word[i]<<endl;
-}
+
+void outputResult(vector<string> word)
+{
+    for(int i = 0; i < word.size(); i++)
+    {
+        cout<<word[i]<< " === " <<HashTable.findEl()<<endl;
+    }
 }
 
-void inputPhrase() {//Nazar don`t read please:)
+void inputPhrase()
+{
     string phrase;
     cout<<" Enter your word/phrase for translate and press 'Enter': "<<endl;
     getline(cin, phrase, '\n');
     cout<< endl;
     cout << phrase<<endl;
     vector<string> word = divideAndRule(phrase);
-    for(int i = 0; i < word.size(); i++){
-        cout<<word[i]<<endl;
-    }
     upperRegistr(word);
+    outputResult(word);
 }
