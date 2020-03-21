@@ -1,16 +1,11 @@
 #include "ParsingData.h"
 
-using namespace std;
-
-void parsing(HashTable& hashTable)
-{
+void parsing(HashTable& hashTable) {
     string word, def;
     ifstream in;
     in.open("dictionary.txt");
-    if(in.is_open())
-    {
-        while(in.eof() != true)
-        {
+    if(in.is_open()) {
+        while(in.eof() != true) {
             getline(in, word, ';');
             getline(in, def, '\n');
             hashTable.addEl(word, def);
@@ -19,68 +14,51 @@ void parsing(HashTable& hashTable)
         }
         in.close();
     }
-    else
-    {
-        cout<< "File wasn't open!"<<endl;
+    else {
+        cout << "File wasn't open!" << endl;
     }
 }
 
-vector<string> divideAndRule(string phrase)
-{
-    vector <string> word;
+vector<string> divideAndRule(string& phrase) {
+    vector <string> words;
+    phrase += " ";
     string buf;
-    char a;
-    for(int i = 0; i < phrase.length(); i++)
-    {
-        a = phrase[i];
-        if(a != ' ' && i != phrase.length()-1)
-        {
-            buf +=a ;
+    for(int i = 0; i < phrase.length(); i++) {
+        if(phrase[i] != ' ') {
+            buf += phrase[i];
         }
-        else
-        {
-            if( i == phrase.length()-1)
-                buf +=a ;
-            word.push_back(buf);
+        else {
+            words.push_back(buf);
             buf = "";
         }
     }
-    return word;
+    return words;
 }
 
-void upperRegistr(vector<string>& word)
-{
-    string a;
-    for(int i = 0; i < word.size(); i++)
-    {
-        for(int j = 0; j < word[i].length(); j++)
-        {
-            word[i][j] = toupper(word[i][j]);
+void upperRegistr(vector<string>& word) {
+    for(int i = 0; i < word.size(); i++) {
+        for(int j = 0; j < word[i].length(); j++) {
+            if (word[i][j] != '-' && word[i][j] != ' ') {
+                word[i][j] = toupper(word[i][j]);
+            }
         }
     }
-    for(int i = 0; i < word.size(); i++)
-    {
-        cout<<word[i]<<endl;
-    }
 }
 
-void outputResult(vector<string> word)
-{
-    for(int i = 0; i < word.size(); i++)
-    {
-        cout<<"Word : "<<word[i]<< endl;
-        cout<<"Definition :  " <<HashTable.findEl(word[i])<<endl;
-    }
-}
-
-void inputPhrase()
-{
+void inputPhrase(HashTable& hashTable) {
     string phrase;
-    cout<<" Enter your word/phrase for translate and press 'Enter': "<<endl;
-    getline(cin, phrase, '\n');
-    cout<< endl;
-    cout << phrase<<endl;
-    vector<string> word = divideAndRule(phrase);
-    upperRegistr(word);
-    outputResult(word);
+    while (true) {
+        cout << "Enter your word/phrase for definition(enter '-1' to exit): ";
+        getline(cin, phrase, '\n');
+        if (phrase == "-1")break;
+        cout << endl;
+        vector<string> words = divideAndRule(phrase);
+        upperRegistr(words);
+        for (int i = 0; i < words.size(); i++) {
+            cout << "Word: " << words[i] << endl;
+            cout << "Definition: ";
+            hashTable.findEl(words[i]);
+            cout << endl;
+        }
+    }
 }
