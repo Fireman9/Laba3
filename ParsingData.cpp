@@ -21,15 +21,10 @@ void parsing(HashTable& hashTable) {
     }
 }
 
-void inputPhrase() {//Nazar don`t read please:)
-vector <string> word;
+vector<string> divideAndRule(string phrase){
+    vector <string> word;
     string buf;
-    string phrase;
     char a;
-    cout<<" Enter your word/phrase for translate and press 'Enter': "<<endl;
-    getline(cin, phrase, '\n');
-    cout<< endl;
-    cout << phrase<<endl;
     for(int i = 0; i < phrase.length(); i++)
     {
         a = phrase[i];
@@ -45,4 +40,30 @@ vector <string> word;
             buf = "";
         }
     }
+    return word;
+}
+
+void upperRegistr(vector<string>& word){
+    string a;
+for(int i = 0; i < word.size(); i++){
+    for(int j = 0; j < word[i].length(); j++){
+        word[i][j] = toupper(word[i][j]);
+    }
+}
+for(int i = 0; i < word.size(); i++){
+    cout<<word[i]<<endl;
+}
+}
+
+void inputPhrase() {//Nazar don`t read please:)
+    string phrase;
+    cout<<" Enter your word/phrase for translate and press 'Enter': "<<endl;
+    getline(cin, phrase, '\n');
+    cout<< endl;
+    cout << phrase<<endl;
+    vector<string> word = divideAndRule(phrase);
+    for(int i = 0; i < word.size(); i++){
+        cout<<word[i]<<endl;
+    }
+    upperRegistr(word);
 }
