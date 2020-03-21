@@ -68,7 +68,8 @@ void outputResult(vector<string> word)
 {
     for(int i = 0; i < word.size(); i++)
     {
-        cout<<word[i]<< " === " <<HashTable.findEl()<<endl;
+        cout<<"Word : "<<word[i]<< endl;
+        cout<<"Definition :  " <<HashTable.findEl(word[i])<<endl;
     }
 }
 
