@@ -4,7 +4,6 @@
 int main() {
 	HashTable hashTable;
 	parsing(hashTable);
-	inputPhrase();
-	system("pause");
+	inputPhrase(hashTable);
 	return 0;
 }
