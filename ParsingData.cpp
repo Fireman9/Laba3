@@ -20,3 +20,14 @@ void parsing(HashTable& hashTable) {
         cout<< "File wasn't open!"<<endl;
     }
 }
+
+void inputPhrase() {//Nazar don`t read please:)
+    vector <string> word;
+    string buf;
+    string phrase;
+    char a;
+    cout << " Enter your word/phrase for translate and press 'Enter': " << endl;
+    getline(cin, phrase, '\n');
+    cout << endl;
+    cout << phrase << endl;
+}
