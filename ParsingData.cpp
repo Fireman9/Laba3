@@ -22,12 +22,27 @@ void parsing(HashTable& hashTable) {
 }
 
 void inputPhrase() {//Nazar don`t read please:)
-    vector <string> word;
+vector <string> word;
     string buf;
     string phrase;
     char a;
-    cout << " Enter your word/phrase for translate and press 'Enter': " << endl;
+    cout<<" Enter your word/phrase for translate and press 'Enter': "<<endl;
     getline(cin, phrase, '\n');
-    cout << endl;
-    cout << phrase << endl;
+    cout<< endl;
+    cout << phrase<<endl;
+    for(int i = 0; i < phrase.length(); i++)
+    {
+        a = phrase[i];
+        if(a != ' ' && i != phrase.length()-1)
+        {
+            buf +=a ;
+        }
+        else
+        {
+            if( i == phrase.length()-1)
+                buf +=a ;
+            word.push_back(buf);
+            buf = "";
+        }
+    }
 }
