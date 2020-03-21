@@ -25,11 +25,16 @@ void LinkedList::addEl(std::string word, std::string definition) {
 
 void LinkedList::printDefinition(std::string word) {
 	Node* temp = this->head;
+	bool found = false;
 	while (temp != nullptr) {
 		if (temp->word == word) {
 			std::cout << temp->definition << std::endl;
+			found = true;
 		}
 		temp = temp->pointer;
+	}
+	if (!found) {
+		std::cout << "Word wasn't found" << std::endl;
 	}
 }
 
